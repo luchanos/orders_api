@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+    pg:
+        image: postgres:10-alpine
+        environment:
+            - POSTGRES_PASSWORD=dbpass
+            - POSTGRES_DB=db
+        ports:
+            - "5432:5432"
+        networks:
+            - custom
+networks:
+    custom:
+        driver: bridge
