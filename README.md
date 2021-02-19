@@ -36,6 +36,10 @@ https://habr.com/ru/post/483202/
 
 https://habr.com/ru/post/464261/#:~:text=API%20(Application%20programming%20interface)%20%E2%80%94,%D0%B1%D1%8B%D0%BB%D0%BE%20%D0%B1%D1%8B%20%D1%81%D0%BB%D0%BE%D0%B2%D0%BE%20%C2%AB%D0%B4%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%C2%BB.
 
+и  краткое видео в 3 ролика
+https://ru.coursera.org/lecture/python-for-web/rabota-chieriez-web-api-yKxXr
+
+
 ЗАЧЕМ? Веб сервис с API - ядро нашего проекта. Именно через взаимодействие с ним будут происходить большинство операций.
 
 
