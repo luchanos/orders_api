@@ -16,6 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from orders.views import add_device_type
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path(r'add_device_type/', add_device_type)
 ]
