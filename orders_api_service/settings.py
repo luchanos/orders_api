@@ -76,11 +76,10 @@ WSGI_APPLICATION = 'orders_api_service.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
         'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': BASE_DIR / 'db.sqlite3',
         'NAME': 'postgres',
         'USER': 'postgres',
+        'TEST': {'NAME': 'test_postgres'},
         'PASSWORD': 'dbpass',
         'HOST': '0.0.0.0',
         'PORT': '5432'

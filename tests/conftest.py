@@ -7,7 +7,7 @@ from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 
 def run_sql(sql):
     conn = psycopg2.connect(
-        database="db",
+        database="test_postgres",
         user="postgres",
         host="localhost",
         password="dbpass"
@@ -15,16 +15,15 @@ def run_sql(sql):
 
     conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
     cur = conn.cursor()
-    # cur.execute("CREATE TABLE test (anana text)")
-    # cur.execute(sql)
+    cur.execute(sql)
     conn.close()
 
 
-@pytest.fixture(scope='session')
+# @pytest.fixture(scope='session')
 def django_db_setup():
     from django.conf import settings
 
-    settings.DATABASES['default']['NAME'] = 'db'
+    # settings.DATABASES['default']['NAME'] = 'db'
 
     # run_sql('DROP SCHEMA IF EXISTS test_schema')
     # run_sql('CREATE SCHEMA IF NOT EXISTS test_schema')
@@ -34,4 +33,4 @@ def django_db_setup():
     for connection in connections.all():
         connection.close()
 
-    # run_sql('DROP DATABASE the_copied_db')
+    # run_sql('DROP SCHEMA IF EXISTS test_schema')
