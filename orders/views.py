@@ -8,6 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 from orders.models import DeviceType
 
 
+# todo luchanos ЭТО ТЕСТОВАЯ ВЬЮХА, ЧИСТО ПОКАЗАТЬ КАК РАБОТАЕТ РУЧКА
 @csrf_exempt
 def add_device_type(request):
     if request.method == 'POST':

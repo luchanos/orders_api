@@ -20,5 +20,6 @@ from orders.views import add_device_type
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path(r'add_device_type/', add_device_type)
+    path(r'add_device_type/', add_device_type) # todo luchanos ЭТО ТЕСТОВАЯ РУЧКА, ЧИСТО ПОКАЗАТЬ КАК РАБОТАЕТ API
+
 ]
