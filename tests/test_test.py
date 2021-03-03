@@ -3,8 +3,12 @@ import pytest
 
 
 @pytest.mark.django_db(transaction=True, reset_sequences=True)
-def test_a():
+def test_add_equipment_type():
     c = Client()
-    js = {"device_type_code": 123, "device_type_name": "some analyzer"}
-    res = c.post('/add_device_type/', js, content_type="application/json")
+    js = {
+        'type_name': 'printer',
+        'description': 'prints black letters on white paper'
+    }
+    res = c.post('/orders/add_equipment_type/', js, content_type="application/json")
     assert res.status_code == 200
+
