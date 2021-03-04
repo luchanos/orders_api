@@ -25,7 +25,7 @@ SECRET_KEY = '8q%4j)pkb&63k#oe_@wez%9t%i$)&3-lxxfx*+jxf0*u2x@9da'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'orders.apps.OrdersConfig'
+    # my applications
+    'orders.apps.OrdersConfig',
+
 ]
 
 MIDDLEWARE = [
@@ -81,9 +83,10 @@ DATABASES = {
         # 'NAME': BASE_DIR / 'db.sqlite3',
         'NAME': 'postgres',
         'USER': 'postgres',
+        'TEST': {'NAME': 'test_postgres'},
         'PASSWORD': 'dbpass',
         'HOST': '0.0.0.0',
-        'PORT': '5432'
+        'PORT': '5435'
     }
 }
 
