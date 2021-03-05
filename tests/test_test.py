@@ -15,5 +15,3 @@ def test_add_equipment():
                       content,
                       content_type='application/json')
     assert res.status_code == 200
-
-
