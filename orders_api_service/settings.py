@@ -25,7 +25,7 @@ SECRET_KEY = '8q%4j)pkb&63k#oe_@wez%9t%i$)&3-lxxfx*+jxf0*u2x@9da'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'orders.apps.OrdersConfig'
+    'orders.apps.OrdersConfig',
+    'organizations.apps.OrganizationsConfig'
 ]
 
 MIDDLEWARE = [
@@ -76,11 +77,10 @@ WSGI_APPLICATION = 'orders_api_service.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
         'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': BASE_DIR / 'db.sqlite3',
         'NAME': 'postgres',
         'USER': 'postgres',
+        'TEST': {'NAME': 'test_postgres'},
         'PASSWORD': 'dbpass',
         'HOST': 'localhost',
         'PORT': '5432'

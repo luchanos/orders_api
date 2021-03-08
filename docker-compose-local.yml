@@ -4,7 +4,7 @@ services:
         image: postgres:10-alpine
         environment:
             - POSTGRES_PASSWORD=dbpass
-            - POSTGRES_DB=db
+            - POSTGRES_DB=postgres
         ports:
             - "5432:5432"
         networks:
