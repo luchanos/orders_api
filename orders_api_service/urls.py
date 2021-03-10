@@ -16,12 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from orders.views import add_device_type
-from organizations.views import add_organization
+from orders.views import add_device_type, add_organization, add_customer
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path(r'add_device_type/', add_device_type),  # todo luchanos ЭТО ТЕСТОВАЯ РУЧКА, ЧИСТО ПОКАЗАТЬ КАК РАБОТАЕТ API
-    path(r'add_organization/', add_organization)
-
+    path(r'add_device_type/', add_device_type),
+    path(r'add_organization/', add_organization),
+    path(r'add_customer/', add_customer),
 ]

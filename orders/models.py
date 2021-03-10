@@ -1,17 +1,21 @@
+from django.core.validators import MinValueValidator, MinLengthValidator
 from django.db import models
 
 
-# Create your models here.
-# todo luchanos ЭТО ТЕСТОВАЯ МОДЕЛЬ, ЧИСТО ПОКАЗАТЬ КАК РАБОТАЕТ РУЧКА И ВЗАИМОДЕЙСТВИЕ С БД
 class DeviceType(models.Model):
-    device_type_code = models.IntegerField()
-    device_type_name = models.CharField(max_length=100)
+    """Модель для типа оборудования"""
+    device_type_code = models.IntegerField(unique=True, validators=[MinValueValidator(1), ])
+    device_type_name = models.CharField(max_length=100, unique=True, validators=[MinLengthValidator(1), ])
 
 
-class Cusstomers(models.Model):
-    fio = models.CharField(max_length=100)
-    organization_id = models.IntegerField(default=0)
-    position = models.CharField(max_length=100)
-    created_dt = models.DateTimeField(auto_now_add=True)
-    updated_dt = models.DateTimeField(auto_now=True)
-    uid = models.IntegerField(default=0)
+class Organizations(models.Model):
+    """Модель для организаций"""
+    organization_name = models.TextField(unique=True, validators=[MinLengthValidator(1), ])
+    address = models.TextField(validators=[MinLengthValidator(1), ])
+
+
+class Customers(models.Model):
+    """Модель для представителей контрагентов"""
+    fio = models.CharField(max_length=100, validators=[MinLengthValidator(3), ])
+    position = models.CharField(max_length=100, validators=[MinLengthValidator(1), ])
+    organization_id = models.ForeignKey(Organizations, on_delete=models.CASCADE)
