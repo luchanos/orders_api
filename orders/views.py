@@ -27,9 +27,10 @@ def add_organization(request):
 def add_customer(request):
     if request.method == 'POST':
         data = json.loads(request.body)
+        organization = Organizations.objects.get(pk=data["organization_id"])
         customer = Customers(fio=data["fio"],
                              position=data["position"],
-                             organization_id=data["organization_id"])
+                             organization_id=organization)
         customer.full_clean()
         customer.save()
         return HttpResponse("OK")
