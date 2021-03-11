@@ -16,12 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from orders.views import add_device_type
+from orders.views import add_equipment_manufacturer
 from organizations.views import add_organization
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path(r'add_device_type/', add_device_type),  # todo luchanos ЭТО ТЕСТОВАЯ РУЧКА, ЧИСТО ПОКАЗАТЬ КАК РАБОТАЕТ API
-    path(r'add_organization/', add_organization)
+    path(r'add_organization/', add_organization),
+    path(r'add_manufacturer/', add_equipment_manufacturer)
 
 ]

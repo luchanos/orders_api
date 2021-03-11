@@ -5,16 +5,18 @@ import json
 # Create your views here.
 from django.views.decorators.csrf import csrf_exempt
 
-from orders.models import DeviceType
+from orders.models import EquipmentManufacturer
 
 
-# todo luchanos ЭТО ТЕСТОВАЯ ВЬЮХА, ЧИСТО ПОКАЗАТЬ КАК РАБОТАЕТ РУЧКА
+#
 @csrf_exempt
-def add_device_type(request):
+def add_equipment_manufacturer(request):
     if request.method == 'POST':
         data = json.loads(request.body)
-        new_device_model = DeviceType(device_type_code=data["device_type_code"],
-                                      device_type_name=data["device_type_name"],
-                                      )
-        DeviceType.save(new_device_model)
-        return HttpResponse("OK")
+        new_equipment_manufacturer = EquipmentManufacturer(manufacturer_name=data['manufacturer_name'],
+                                                           uid=['uid'],
+                                                           description=['description'])
+        EquipmentManufacturer.save(new_equipment_manufacturer)
+        return HttpResponse('OK')
+    else:
+        return HttpResponse("YOU MUST USE POST METHOD!")
