@@ -20,3 +20,4 @@ def add_equipment_manufacturer(request):
         return HttpResponse('OK')
     else:
         return HttpResponse("YOU MUST USE POST METHOD!")
+

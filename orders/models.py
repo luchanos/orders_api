@@ -13,3 +13,4 @@ class EquipmentManufacturer(models.Model):
         verbose_name = 'Производитель'
         verbose_name_plural = 'Производители'
 
+
