@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from contacts.views import add_contact
 from contacts_info.views import add_contacts_info
 from orders.views import add_device_type
 from organizations.views import add_organization
@@ -24,5 +25,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'add_device_type/', add_device_type),  #  luchanos ЭТО ТЕСТОВАЯ РУЧКА, ЧИСТО ПОКАЗАТЬ КАК РАБОТАЕТ API
     path(r'add_organization/', add_organization),
-    path(r'add_contacts_info/', add_contacts_info)
+    path(r'add_contacts_info/', add_contacts_info),
+    path(r'add_contact/', add_contact)
 ]
