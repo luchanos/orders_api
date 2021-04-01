@@ -1,20 +1,36 @@
 from django.http import HttpResponse
 import json
 
-
-# Create your views here.
-from django.views.decorators.csrf import csrf_exempt
-
-from orders.models import DeviceType
+from orders.models import DeviceType, Organizations, Customers
 
 
-# todo luchanos ЭТО ТЕСТОВАЯ ВЬЮХА, ЧИСТО ПОКАЗАТЬ КАК РАБОТАЕТ РУЧКА
-@csrf_exempt
 def add_device_type(request):
     if request.method == 'POST':
         data = json.loads(request.body)
-        new_device_model = DeviceType(device_type_code=data["device_type_code"],
-                                      device_type_name=data["device_type_name"],
-                                      )
-        DeviceType.save(new_device_model)
+        new_device_type = DeviceType(device_type_code=data["device_type_code"],
+                                     device_type_name=data["device_type_name"])
+        new_device_type.full_clean()
+        new_device_type.save()
+        return HttpResponse("OK")
+
+
+def add_organization(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        organization = Organizations(organization_name=data["organization_name"],
+                                     address=data["address"])
+        organization.full_clean()
+        organization.save()
+        return HttpResponse("OK")
+
+
+def add_customer(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        organization = Organizations.objects.get(pk=data["organization_id"])
+        customer = Customers(fio=data["fio"],
+                             position=data["position"],
+                             organization_id=organization)
+        customer.full_clean()
+        customer.save()
         return HttpResponse("OK")
