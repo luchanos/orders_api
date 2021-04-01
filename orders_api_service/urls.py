@@ -16,11 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from orders.views import add_device_type, add_organization, add_customer
+from orders.views import add_device_type, add_organization, add_customer, add_equipment_manufacturer
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'add_device_type/', add_device_type),
     path(r'add_organization/', add_organization),
     path(r'add_customer/', add_customer),
+    path(r'add_manufacturer/', add_equipment_manufacturer)
 ]

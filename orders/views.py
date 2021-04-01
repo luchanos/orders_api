@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 import json
 
-from orders.models import DeviceType, Organizations, Customers
+from orders.models import DeviceType, Organizations, Customers, Manufacturer
 
 
 def add_device_type(request):
@@ -31,6 +31,17 @@ def add_customer(request):
         customer = Customers(fio=data["fio"],
                              position=data["position"],
                              organization_id=organization)
-        customer.full_clean()
+        customer.full_clean()  # для применения валидации
         customer.save()
         return HttpResponse("OK")
+
+
+def add_equipment_manufacturer(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        equipment_manufacturer = Manufacturer(manufacturer_name=data['manufacturer_name'],
+                                              uid=['uid'],
+                                              description=['description'])
+        equipment_manufacturer.full_clean()
+        equipment_manufacturer.save()
+        return HttpResponse('OK')

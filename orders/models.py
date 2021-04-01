@@ -19,3 +19,15 @@ class Customers(models.Model):
     fio = models.CharField(max_length=100, validators=[MinLengthValidator(3), ])
     position = models.CharField(max_length=100, validators=[MinLengthValidator(1), ])
     organization_id = models.ForeignKey(Organizations, on_delete=models.CASCADE)
+
+
+class Manufacturer(models.Model):
+    """Модель для производителей оборудования"""
+    manufacturer_name = models.CharField(max_length=50, blank=True, verbose_name='Имя производителя')
+
+    class Meta:
+        verbose_name = 'Производитель'
+        verbose_name_plural = 'Производители'
+
+
+# TODO LUCHANOS добавить модель для оборудования и связать через неё модели производителя и типа оборудования

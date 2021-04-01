@@ -13,6 +13,7 @@ def test_a():
 @pytest.mark.django_db(transaction=True, reset_sequences=True)
 def test_add_organization():
     c = Client()
-    js = {"org_name": "ООО Рога и копыта", "org_address": "Тупичок Гоблина, 123", "org_city": "Мухосранск", "org_inn": 2100000000}
+    js = {"organization_name": "ООО Рога и копыта",
+          "address": "Мухосранск, Тупичок Гоблина, 123"}
     res = c.post('/add_organization/', js, content_type="application/json")
     assert res.status_code == 200
